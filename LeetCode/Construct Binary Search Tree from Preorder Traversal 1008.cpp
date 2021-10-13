@@ -20,7 +20,7 @@ public:
         
         TreeNode* t = new TreeNode(array[*index]);
         
-        *index = *index+1;
+        (*index)++;
         t->left = rec(array,index,t->val);
         t->right = rec(array,index,max);
         
