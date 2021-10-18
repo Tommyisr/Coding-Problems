@@ -16,13 +16,16 @@ public:
     bool depth(TreeNode* root, int dep, int x, int y){
         
         if(!root) return true;
-        if(root->left && root->right){
+        else if(root->left && root->right){
             if((root->left->val == x && root->right->val == y) || (root->left->val == y && root->right->val == x)) return false;
         }
+        
         array.insert({root->val,dep});
-        dep++;
-        int left = depth(root->left,dep,x,y);
-        int right = depth(root->right,dep,x,y);
+    
+        
+        int left = depth(root->left,dep+1,x,y);
+        int right = depth(root->right,dep+1,x,y);
+        
         return left && right;
         
         
@@ -31,8 +34,6 @@ public:
     
     bool isCousins(TreeNode* root, int x, int y) {
         
-        // depth(root,0,x,y);
-        // depth(root,y,0);
         
         if(depth(root,0,x,y) && array[x] == array[y]) return true;
         return false;
