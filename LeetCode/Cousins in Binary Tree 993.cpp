@@ -23,7 +23,6 @@ public:
         dep++;
         int left = depth(root->left,dep,x,y);
         int right = depth(root->right,dep,x,y);
-        dep--;
         return left && right;
         
         
